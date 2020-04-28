@@ -3,10 +3,23 @@ const http = require('http');
 const hostname = '';
 const port = 3000;
 
+function getFoodItemsFromDb()
+{
+	return ["Meat", "Vegetables", "Beans"];
+}
+
+function sendFoodItems(response) {
+	// set HTTP response code
+  	response.writeHead(200, {"Content-Type": "application/json"});
+
+  	var json = JSON.stringify({ 
+   	 foodItems: getFoodItemsFromDb(), 
+  	});
+  	response.end(json);
+}
+
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+  sendFoodItems(res);
 });
 
 server.listen(port, hostname, () => {

@@ -36,9 +36,23 @@ function removeItem(event)
 	localStorage.removeItem(event.target.id);
 }
 
+function fetchData(addr)
+{
+	fetch(addr)
+ 	.then((response) => {
+		return response.json();
+ 	})
+	.then((data) => {
+		console.log(data);
+		return data;
+	});
+}
+
 function initData()
 {
-	//localStorage.clear();
+	var data = fetchData("http://192.168.99.100:3000");
+
+	localStorage.clear();
 	for(var i = 0; i < localStorage.length; i++)
 	{
 	    var retrivedFoodItem = localStorage.getItem(localStorage.key(i));
