@@ -20,9 +20,8 @@ function sendFoodItems(response)
     response.end(json);
 }
 
-app.get('/', function (req, res, next) {
-  //res.json({msg: 'This is CORS-enabled for all origins!'})
-  sendFoodItems(res);
+app.get('/getFood', function (req, res, next) {
+	sendFoodItems(res);
 })
  
 app.listen(3000, function () {

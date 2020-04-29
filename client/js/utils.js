@@ -46,7 +46,7 @@ function CallbackGetFoodItems(foodItems)
 
 const getFoodItems = async (ip) => 
 {
-  	const response = await fetch("http://192.168.99.100:3000")
+  	const response = await fetch("http://192.168.99.100:3000/getFood")
   						   .then(response => response.json())
   						   .then(response => CallbackGetFoodItems(response.foodItems));
 }
