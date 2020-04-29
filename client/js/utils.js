@@ -36,26 +36,22 @@ function removeItem(event)
 	localStorage.removeItem(event.target.id);
 }
 
-function fetchData(addr)
+function CallbackGetFoodItems(foodItems)
 {
-	fetch(addr)
- 	.then((response) => {
-		return response.json();
- 	})
-	.then((data) => {
-		console.log(data);
-		return data;
-	});
+	for(var i = 0; i < foodItems.length; i++)
+	{
+	   createAndDisplayFoodItem(foodItems[i], false);
+	}
+}
+
+const getFoodItems = async (ip) => 
+{
+  	const response = await fetch("http://192.168.99.100:3000")
+  						   .then(response => response.json())
+  						   .then(response => CallbackGetFoodItems(response.foodItems));
 }
 
 function initData()
 {
-	var data = fetchData("http://192.168.99.100:3000");
-
-	localStorage.clear();
-	for(var i = 0; i < localStorage.length; i++)
-	{
-	    var retrivedFoodItem = localStorage.getItem(localStorage.key(i));
-	    createAndDisplayFoodItem(retrivedFoodItem, false);
-	}
+	getFoodItems("http://192.168.99.100:3000");
 }
