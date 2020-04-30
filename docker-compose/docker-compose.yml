@@ -11,3 +11,9 @@ services:
     #restart: always
     ports:
       - 3000:3000
+
+  frigo_server:
+    image: frigo_client:1.0
+    #restart always
+    ports:
+      - 4444:4444
