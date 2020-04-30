@@ -3,5 +3,5 @@ WORKDIR frigo
 COPY app.js .
 COPY package.json .
 RUN npm config set package-lock false
-RUN npm install cors express
+RUN npm install cors express redis
 CMD ["node", "app.js"]
