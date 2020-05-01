@@ -15,7 +15,7 @@ function sendFoodItems(res, result)
     res.end(json);
 }
 
-function sendFoodItemsFromDb(res)
+function sendFoodItemsFromRedis(res)
 {
 	// set HTTP response code
     res.writeHead(200, {"Content-Type": "application/json"});
@@ -41,7 +41,7 @@ function sendFoodItemsFromDb(res)
 }
 
 app.get('/getFood', function (req, res, next) {
-	sendFoodItemsFromDb(res);
+	sendFoodItemsFromRedis(res);
 })
  
 app.listen(3000, function () {
